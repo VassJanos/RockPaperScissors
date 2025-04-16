@@ -21,11 +21,60 @@ function GetHumanChoice() {
     let choice = prompt("choose your destiny:").toLowerCase();
     return choice;
 }
+let standoff;
 
-function playRound(GetComputerChoice, GetHumanChoice) {
+function playRound(choice1, choice2) {
+    standoff = true;
+
+    if (choice1 == choice2) {
+        console.log("Mexican stand-off");
+        standoff = false;
+        return;
+    }
+
+    if (choice1 == "rock" && choice2 != "paper") {
+        console.log("You won!", choice1, " beats", choice2);
+        return;
+    } else {
+        console.log("Bad news..", choice2, "beats", choice1);
+        return;
+    }
     
+    if (choice1 == "paper" && choice2 != "scissors") {
+        console.log("You won!", choice1, " beats", choice2);
+        return;
+    } else {
+        console.log("Bad news..", choice2, "beats", choice1);
+        return;
+    }
+
+    if (choice1 == "scissors" && choice2 != "rock") {
+        console.log("You won!", choice1, " beats", choice2);
+        return;
+    } else {
+        console.log("Bad news..", choice2, "beats", choice1);
+        return;
+    }
 }
 
+function playGame() {
+    let rounds = 1;
+     while (rounds != 6) {
+        let computerWeapon = GetComputerChoice();
+        let humanWeapon = GetHumanChoice();
+
+        console.log("round", rounds, ". FIGHT!");
+        
+        playRound(humanWeapon, computerWeapon);
+        
+        if (standoff == true) {
+            rounds++;
+        }
+     }
+     console.log("done.")
+}
+
+playGame();
 /*
 GetComputerChoice (math.random)
 
