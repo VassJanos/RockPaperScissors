@@ -34,25 +34,31 @@ function playRound(choice1, choice2) {
 
     if (choice1 == "rock" && choice2 != "paper") {
         console.log("You won!", choice1, " beats", choice2);
+        humanScore++;
         return;
     } else {
         console.log("Bad news..", choice2, "beats", choice1);
+        compScore++;
         return;
     }
     
     if (choice1 == "paper" && choice2 != "scissors") {
         console.log("You won!", choice1, " beats", choice2);
+        humanScore++;
         return;
     } else {
         console.log("Bad news..", choice2, "beats", choice1);
+        compScore++;
         return;
     }
 
     if (choice1 == "scissors" && choice2 != "rock") {
         console.log("You won!", choice1, " beats", choice2);
+        humanScore++;
         return;
     } else {
         console.log("Bad news..", choice2, "beats", choice1);
+        compScore++;
         return;
     }
 }
@@ -71,21 +77,21 @@ function playGame() {
             rounds++;
         }
      }
-     console.log("done.")
+     console.log("  ");
+}
+
+function winner(player, computer) {
+    console.log("Scores:");
+    console.log("Your score:", player);
+    console.log("Computer score:", computer);
+    console.log("  ");
+
+    if (player > computer) {
+        console.log("You win!");
+    } else {
+        console.log("Maybe next time..");
+    }
 }
 
 playGame();
-/*
-GetComputerChoice (math.random)
-
-GetHumanChoice (prompt)
--make it case insensitive
-
-global scope var - humanScore CompScore
-
-playRound (parameters humanChoice:compChoice)
--representing round winner exm.: "You lose! Paper beats Rock”
-
-playGame
--calls playRound for 5 rounds
-*/
+winner(humanScore, compScore);
